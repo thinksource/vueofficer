@@ -9,7 +9,7 @@
           placeholder="Filter by event name..."
           class="filter-input"
           size="17"
-          onclick="selectRow(null)"
+          onclick="selectRow(null)" tabindex="1"
         /></label>
 
         <div class="date-filters">
@@ -17,23 +17,23 @@
             <input
                 type="date"
                 v-model="startDate"
-                class="date-input"
+                class="date-input" tabindex="2"
             />
             </label>
             <label>To
             <input
                 type="date"
                 v-model="endDate"
-                class="date-input"
+                class="date-input" tabindex="3"
             />
             </label>
         </div>
-        <button @click="filterEvent">Search</button>
+        <button @click="filterEvent" tabindex="4">Search</button>
       </div>
       
   
       <!-- 数据表格区 -->
-      <div class="grid-container">
+      <div class="grid-container" tabindex="0">
         <table class="data-table">
             <caption>XXX Events Table</caption>
           <thead>
@@ -165,6 +165,7 @@
     display: flex;
     height: 100vh;
     overflow-x: auto;
+    overflow-y: auto;
   }
   
   .filters {

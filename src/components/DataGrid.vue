@@ -5,10 +5,11 @@
       <div class="filters">
         <label>Event: 
         <input
+          ref="searchInput"
           v-model="filterEvent"
-          placeholder="Filter by event name..."
+          placeholder="Filter by event name (Ctrl+K)"
           class="filter-input"
-          size="17"
+          size="22"
           onclick="selectRow(null)" tabindex="1"
         /></label>
 
@@ -77,17 +78,27 @@
   <script setup>
   import { ref, computed, onMounted } from 'vue';
   
-  // 响应式数据
+  
   const data = ref([]);
   const filterEvent = ref('');
   const startDate = ref('');
   const endDate = ref('');
   let selectedRow = ref(null);
-  
+  const searchInput = ref(null);
   let headers = ref();
   
+  const handleKeyDown = (event) => {
+  // Check for Ctrl/Cmd + K combination
+  if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+    event.preventDefault();
+    if (searchInput.value) {
+      searchInput.value.focus();
+    }
+  }
+};
   // OnMounted hook
   onMounted(async () => {
+    document.addEventListener('keydown', handleKeyDown);
     try {
       const response = await fetch('/api/test.json');
       data.value = await response.json();
@@ -98,7 +109,7 @@
     }
   });
   
-  // 格式化显示内容
+  // format Value 
   const formatValue = (key, value) => {
     if (key === 'date') {
       return new Date(value).toLocaleDateString();
@@ -120,16 +131,16 @@
     return headerMap[key] || key;
   };
   
-  // 过滤逻辑
+  // filter data function
   const filteredData = computed(() => {
     selectedRow.value = null;
     return data.value.filter(item => {
-      // 事件名称过滤
+      // event name filter
       const nameMatch = item.event.toLowerCase().includes(
         filterEvent.value.toLowerCase()
       );
       
-      // 日期范围过滤
+      // date filter
       const eventDate = new Date(item.date);
       const start = startDate.value ? new Date(startDate.value) : null;
       const end = endDate.value ? new Date(endDate.value) : null;
@@ -147,7 +158,7 @@
     });
   });
   
-  // 行选择处理
+  // select row function
   const selectRow = (row) => {
     selectedRow.value = row;
   };

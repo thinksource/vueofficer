@@ -10,7 +10,7 @@
           placeholder="Filter by event name (Ctrl+K)"
           class="filter-input"
           size="22"
-          onclick="selectRow(null)" tabindex="1"
+          onclick="selectRow(null)" 
         /></label>
 
         <div class="date-filters">
@@ -18,23 +18,23 @@
             <input
                 type="date"
                 v-model="startDate"
-                class="date-input" tabindex="2"
+                class="date-input" 
             />
             </label>
             <label>To
             <input
                 type="date"
                 v-model="endDate"
-                class="date-input" tabindex="3"
+                class="date-input" 
             />
             </label>
         </div>
-        <button @click="filterEvent" tabindex="4">Search</button>
+        <button @click="filterEvent">Search</button>
       </div>
       
   
       <!-- 数据表格区 -->
-      <div class="grid-container" tabindex="0">
+      <div class="grid-container" tabindex=0>
         <table class="data-table">
             <caption>XXX Events Table</caption>
           <thead>
@@ -86,7 +86,7 @@
   let selectedRow = ref(null);
   const searchInput = ref(null);
   let headers = ref();
-  
+
   const handleKeyDown = (event) => {
   // Check for Ctrl/Cmd + K combination
   if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {

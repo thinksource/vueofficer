@@ -17,3 +17,35 @@ WCAG 2.0 (2008), 2.1 (2018), and 2.2 (2023). Most organizations target WCAG 2.1 
 
 view=>investget=>action
 
+## What key features or functionalities does the page need to have?
+. reading data from json file with dynamic columns
+. filter the data dynamically
+. key access
+. detail table present
+## What technologies did you use to develop this webpage?
+. javascript
+. vue3
+. css3
+. cypress for test
+. vite
+##	Why did you choose these specific technologies or tools?
+. easy to develop
+. easy for future do same extension
+. easy to do CI/CD and deliver production
+##	How did you ensure the webpage complies with WCAG (Web Content Accessibility Guidelines)?
+. see above
+. use WAVE or axe DevTools to make less issue
+##	What were the biggest challenges you faced while working on this webpage?
+. make the webpage compiles with WCAG
+
+## How would you approach collaboration with designers, product managers, or other developers?
+1, I will list the requirement of project and take some notes on my idea
+2, Then I will hold a meeting designer, product manage
+3, Used Jira for task tracking and Figma for real-time design collaboration.
+4, Conducted paired programming sessions to implement accessible Vue/React components
+5, automated accessibility testing in the CI/CD pipeline 
+
+##	If you had more time, what additional features or improvements would you consider adding to the webpage?
+
+1, communication with other
+2, add pagination and sortable collumns 
